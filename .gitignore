@@ -1,0 +1,6 @@
+# Virtual Environment directory
+/venv/
+/.idea/
+
+# Compiled Python
+*.pyc
