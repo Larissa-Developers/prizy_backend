@@ -10,6 +10,7 @@ djangorestframework-jwt = "*"
 django-cors-headers = "*"
 django-storages = "*"
 mysqlclient = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"
