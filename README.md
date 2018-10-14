@@ -70,6 +70,12 @@ Event listing:
 {domain}/api/events (GET)
 ```
 
+Event check-in:
+
+```
+{domain/api/events/<event_id>/checkin (POST)
+```
+
 Event draw participation:
 
 ```
