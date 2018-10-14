@@ -1,121 +1,68 @@
-# Prizy back-end API architecture
+# Prizy Back-end
 
-Design, API resources and overall functionality draft.
+Django REST API back-end for Prizy
 
-Dimitris Gravanis - <dimgrav@gmail.com>
+**Requirements:**
 
-## About
+* [Python 3.6](https://www.python.org/downloads/release/python-366/)
+* [MySQL](https://www.mysql.com/)
 
-Prizy will use a mobile, cross-platform thin client to provide members of the **Larissa Developers Meetup**, or event attendees, functionality for participating in prize draws of the occuring event in real-time.
-
-Additionally, its back-end should provide functionality at an admin-level, i.e. an admin panel for account management and for performing prize draws.
-
-Therefore, the application architecture must ensure the security, integrity and partial (client-side) immutability of the performed transactions.
-
-The goal is to provide a concrete platform for future expansion, tailored to any potential upgrades of the mobile client.
-
-## Client Requirements
-
-The mobile client provides the following functionality:
-
-* User registration
-* Ongoing event listing
-* Participation in Larissa Developers Meetup prize draws
-* Prize claim
-
-As such, the API must implement the following:
-
-## API Design
-
-In a (really abstract) nutshell:
+For any Ubuntu-based OS:
 
 ```
-api
-.
-├── accounts
-│   └── ...
-└── events
-    └── ...
+sudo apt install build-essential python3-dev libmysqlclient-dev
 ```
 
-The API should provide the following endpoints:
+## Quickstart
 
-#### Open
-
-Landing page:
+### *1. Clone the repository:*
 
 ```
-{domain}/ (GET)
+$ git clone https://github.com/Larissa-Developers/prizy_backend.git
 ```
 
-#### Users
+### *2. Install pipenv:*
 
-JWT authentication / token refresh / verification:
+Follow the instructions on [Pipenv Documentation](https://pipenv.readthedocs.io/en/latest/) to install `pipenv` on your development environment.
 
-```
-{domain}/auth (POST)
-{domain}/refresh (POST)
-{domain}/verify (POST)
-```
+### *3. Install dependencies:*
 
-User registration:
+In the project root directory (while in the virtual environment) run:
 
 ```
-{domain}/api/accounts/register (POST)
+$ (venv) pipenv install
 ```
 
-Event listing:
+### *4. Create a new MySQL Schema and modify settings.py accordingly:*
 
 ```
-{domain}/api/events (GET)
+$ mysql -u <username> -p <password> < <project_dir>/build/init_local_db.sql
 ```
 
-Event check-in:
+### *5. Migrate to MySQL:*
 
 ```
-{domain}/api/events/<event_id>/checkin (POST)
+$ python manage.py migrate
 ```
 
-Event draw participation:
+### *6. Create a superuser:*
 
 ```
-{domain}/api/events/<event_id>/draws/<draw_id>/participate (POST)
+$ python manage.py createsuperuser --username=yourusername --email=youremail
 ```
 
-Event draw prize claim:
+### *7. Run the server:*
 
 ```
-{domain}/api/events/<event_id>/draws/<draw_id>/claim (POST)
+$ python manage.py runserver
 ```
 
-The fundamental principle behind registration, is that a Meetup event attendee will be able to participate only if he has registered for an account.
-
-As a result, draw participations will be handled implicitly, based on the account data (i.e the provided email address), without requiring any additional user information to be submitted via the mobile client app.
-
-### Admin-specific
-
-Django admin panel:
+Output:
 
 ```
-{domain}/admin (GET)
+Django version 2.1.2, using settings 'prizy.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
 ```
 
-Perform event prize draw:
-
-```
-{domain}/api/events/<event_id>/draws/<draw_id>/perform (POST)
-```
-
-## Technologies
-
-Prizy back-end will be built upon:
-
-* [Django 2.1](https://www.djangoproject.com/)
-* [Django REST Framework](http://www.django-rest-framework.org/)
-* [Django REST Framework JWT](https://getblimp.github.io/django-rest-framework-jwt/)
-* [MySQL Server 5.7](https://www.mysql.com/)
-* [Python MySQL client](https://pypi.python.org/pypi/mysqlclient)
-
-## To-do list
-
-All of the above! :P
+All done. The app is up and running!
