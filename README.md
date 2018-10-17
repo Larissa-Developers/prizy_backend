@@ -7,25 +7,27 @@ Django REST API back-end for Prizy
 * [Python 3.6](https://www.python.org/downloads/release/python-366/)
 * [MySQL](https://www.mysql.com/)
 
+**Additional dependencies**
+
 For any Ubuntu-based OS:
 
 ```
-sudo apt install build-essential python3-dev libmysqlclient-dev
+$ sudo apt install build-essential python3-dev libmysqlclient-dev
 ```
 
 ## Quickstart
 
-### *1. Clone the repository:*
+**1. Clone the repository:**
 
 ```
 $ git clone https://github.com/Larissa-Developers/prizy_backend.git
 ```
 
-### *2. Install pipenv:*
+**2. Install pipenv:**
 
 Follow the instructions on [Pipenv Documentation](https://pipenv.readthedocs.io/en/latest/) to install `pipenv` on your development environment.
 
-### *3. Install dependencies:*
+**3. Install dependencies:**
 
 In the project root directory (while in the virtual environment) run:
 
@@ -33,25 +35,25 @@ In the project root directory (while in the virtual environment) run:
 $ (venv) pipenv install
 ```
 
-### *4. Create a new MySQL Schema and modify settings.py accordingly:*
+**4. Create a new MySQL Schema and modify settings.py accordingly:**
 
 ```
 $ mysql -u <username> -p <password> < <project_dir>/build/init_local_db.sql
 ```
 
-### *5. Migrate to MySQL:*
+**5. Migrate to MySQL:**
 
 ```
 $ python manage.py migrate
 ```
 
-### *6. Create a superuser:*
+**6. Create a superuser:**
 
 ```
 $ python manage.py createsuperuser --username=yourusername --email=youremail
 ```
 
-### *7. Run the server:*
+**7. Run the server:**
 
 ```
 $ python manage.py runserver
@@ -65,4 +67,4 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-All done. The app is up and running!
+All done. The server is up and running!
