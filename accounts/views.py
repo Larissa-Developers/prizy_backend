@@ -10,8 +10,6 @@ from rest_framework.views import APIView
 from accounts.models import Account
 from accounts.serializers import AccountSerializer
 
-# TODO: add forgot/reset password functionality
-
 
 class AccountList(ListAPIView):
     """
@@ -128,7 +126,7 @@ class AccountSetup(APIView):
             acc.save()
 
             return Response(status=status.HTTP_202_ACCEPTED)
-        except ValidationError:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
         except Account.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+        except ValidationError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
