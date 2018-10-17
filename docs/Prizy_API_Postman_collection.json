@@ -17,13 +17,11 @@
 						{
 							"key": "username",
 							"value": "{{username}}",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
 							"value": "{{password}}",
-							"description": "",
 							"type": "text"
 						}
 					]
@@ -52,13 +50,11 @@
 						{
 							"key": "username",
 							"value": "prizyuser",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
 							"value": "tsiros1234",
-							"description": "",
 							"type": "text"
 						}
 					]
@@ -87,7 +83,6 @@
 						{
 							"key": "token",
 							"value": "{{Token}}",
-							"description": "",
 							"type": "text"
 						}
 					]
@@ -116,7 +111,6 @@
 						{
 							"key": "token",
 							"value": "{{Token}}",
-							"description": "",
 							"type": "text"
 						}
 					]
@@ -135,7 +129,7 @@
 			"response": []
 		},
 		{
-			"name": "GET Account Details",
+			"name": "PATCH Account Details",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -150,19 +144,16 @@
 						{
 							"key": "first_name",
 							"value": "John",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "last_name",
 							"value": "Doe",
-							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "email",
 							"value": "john@doe.com",
-							"description": "",
 							"type": "text"
 						}
 					]
@@ -176,6 +167,177 @@
 						"api",
 						"accounts",
 						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{Token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "john@doe.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/api/accounts/2",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"accounts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{Token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "john@doe.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/api/accounts",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account Setup",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{Token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "john@doe.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/api/accounts",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Account Setup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{Token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pass",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "pass_repeat",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/api/accounts/{{pk}}/setup/{{key}}",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"accounts",
+						"{{pk}}",
+						"setup",
+						"{{key}}"
 					]
 				}
 			},
