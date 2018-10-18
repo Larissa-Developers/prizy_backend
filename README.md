@@ -29,10 +29,10 @@ Follow the instructions on [Pipenv Documentation](https://pipenv.readthedocs.io/
 
 **3. Install dependencies:**
 
-In the project root directory (while in the virtual environment) run:
+In the project root directory run:
 
 ```
-$ (venv) pipenv install
+(venv) $ pipenv install
 ```
 
 **4. Create a new MySQL Schema and modify settings.py accordingly:**
