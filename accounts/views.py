@@ -21,6 +21,26 @@ class AccountList(ListAPIView):
     serializer_class = AccountSerializer
 
 
+class AccountRegister(APIView):
+    """
+    Register for a new user account
+    """
+
+    permission_classes = (AllowAny,)
+
+    def post(self, req):
+        account = Account.objects.create()
+        serializer = AccountSerializer(account, data=req.data)
+        if serializer.is_valid():
+            serializer.password = make_password(serializer.validated_data['password'])
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST, data={
+            'reason': 'Request data not properly structured'
+        })
+
+
 class AccountDetails(APIView):
     """
     Retrieve/update the requested user account information
