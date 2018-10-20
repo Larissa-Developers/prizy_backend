@@ -64,6 +64,12 @@ User registration:
 {domain}/api/accounts/register (POST)
 ```
 
+User password setup:
+
+```
+{domain}/api/accounts/<pk>/setup/<key> (POST)
+```
+
 Event listing:
 
 ```
