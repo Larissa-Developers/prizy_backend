@@ -68,3 +68,8 @@ Quit the server with CONTROL-C.
 ```
 
 All done. The server is up and running!
+
+## References
+
+* [Django Documentation](https://docs.djangoproject.com/en/2.1/)
+* [Django REST Tutorials & API Guide](https://www.django-rest-framework.org/)
