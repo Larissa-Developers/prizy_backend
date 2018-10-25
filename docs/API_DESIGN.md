@@ -124,4 +124,11 @@ Prizy back-end will be built upon:
 
 ## To-do list
 
-All of the above! :P
+For information on the project's pending tasks, visit the Prizy Backend Trello board [here](https://trello.com/b/zIPr3q6l/prizy-backend).
+
+## Knowledge Base
+
+You can find valuable information on the Prizy API design principles here:
+
+* [RESTful Design Principles](https://restfulapi.net/)
+* [JSON Web Token Authentication](https://jwt.io/introduction/)
