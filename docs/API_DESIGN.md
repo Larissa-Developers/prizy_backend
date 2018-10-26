@@ -98,7 +98,7 @@ The fundamental principle behind registration, is that a Meetup event attendee w
 
 As a result, draw participations will be handled implicitly, based on the account data (i.e the provided email address), without requiring any additional user information to be submitted via the mobile client app.
 
-### Admin-specific
+#### Admin-specific
 
 Django admin panel:
 
@@ -121,6 +121,12 @@ Prizy back-end will be built upon:
 * [Django REST Framework JWT](https://getblimp.github.io/django-rest-framework-jwt/)
 * [MySQL Server 5.7](https://www.mysql.com/)
 * [Python MySQL client](https://pypi.python.org/pypi/mysqlclient)
+
+API resources development can be boosted significantly by using:
+
+* [Postman](https://www.getpostman.com/)
+
+*Import `docks/Prizy_API_Postman_collection.json` to your Postman development environment to use the existing API requests as boilerplate!*
 
 ## To-do list
 
