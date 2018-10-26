@@ -126,7 +126,7 @@ API resources development can be boosted significantly by using:
 
 * [Postman](https://www.getpostman.com/)
 
-*Import `docks/Prizy_API_Postman_collection.json` to your Postman development environment to use the existing API requests as boilerplate!*
+*Import* `docs/Prizy_API_Postman_collection.json` *to your Postman development environment to use the existing API requests as boilerplate!*
 
 ## To-do list
 
