@@ -1,6 +1,6 @@
 # Prizy Back-end
 
-Django REST API back-end for Prizy
+Django REST API back-end for Prizy.
 
 **Requirements:**
 
