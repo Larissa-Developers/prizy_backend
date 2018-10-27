@@ -9,6 +9,7 @@ djangorestframework = "*"
 djangorestframework-jwt = "*"
 django-cors-headers = "*"
 django-storages = "*"
+meetup-api = "*"
 mysqlclient = "*"
 pillow = "*"
 
