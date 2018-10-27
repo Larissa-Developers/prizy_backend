@@ -1,0 +1,49 @@
+api response
+    "utc_offset": -18000000,
+    "venue": {
+        "country": "us",
+        "localized_country_name": "USA",
+        "city": "New York",
+        "address_1": "28 West 23rd St., 4th Floor",
+        "name": "AppNexus Razzle Dazzle Room",
+        "lon": -73.990547,
+        "id": 23750028,
+        "state": "NY",
+        "lat": 40.741898,
+        "repinned": false
+    },
+    "rsvp_limit": 100,
+    "headcount": 0,
+    "visibility": "public",
+    "waitlist_count": 0,
+    "created": 1535486195000,
+    "fee": {
+        "amount": 10,
+        "currency": "USD",
+        "label": "Price",
+        "accepts": "wepay",
+        "required": "1"
+    },
+    "maybe_rsvp_count": 0,
+    "description": "<p>Join us for NYC's most famous and longest running monthly tech event! You'll see a fantastic lineup of New York tech companies presenting live demos of their products, followed by an afterparty where you can network with the community and meet our demoers and sponsors.</p>",
+    "event_url": "https://www.meetup.com/ny-tech/events/254183653/",
+    "yes_rsvp_count": 55,
+    "duration": 10800000,
+    "name": "November 2018 NY Tech Meetup",
+    "id": "254183653",
+    "photo_url": "https://secure.meetupstatic.com/photos/event/8/5/b/2/global_471214226.jpeg",
+    "time": 1541547000000,
+    "updated": 1539025673000,
+    "group": {
+        "join_mode": "open",
+        "created": 1096140622000,
+        "name": "NY Tech Meetup",
+        "group_lon": -73.98999786376953,
+        "id": 176399,
+        "urlname": "ny-tech",
+        "group_lat": 40.70000076293945,
+        "who": "NYC Technologists"
+    },
+    "status": "upcoming"
+
+},
