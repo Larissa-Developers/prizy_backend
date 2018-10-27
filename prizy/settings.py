@@ -17,18 +17,17 @@ from distutils.util import strtobool
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')mrgma3whkkq8hn!%w+4iw4$1ougvre6_t%@x*hn)hibt+u#=s'
+SECRET_KEY = os.getenv('PRIZY_SECRET_KEY', ')mrgma3whkkq8hn!%w+4iw4$1ougvre6_t%@x*hn)hibt+u#=s')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = strtobool(os.getenv('PRIZY_DEBUG_ENABLED', 'True'))
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS_STR = os.getenv('PRIZY_ALLOWED_HOSTS', 'localhost,.larissa-developers.org,')
+ALLOWED_HOSTS = [x.strip() for x in ALLOWED_HOSTS_STR.split(',')]
 
 # Application definition
 
@@ -78,7 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'prizy.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -100,7 +98,6 @@ DATABASES = {
     }
 }
 
-
 # REST Framework Authentication configuration
 # Primary default authentication method is JWT
 
@@ -114,7 +111,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -156,7 +152,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
