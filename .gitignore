@@ -4,6 +4,7 @@
 
 # IDE configurations
 /.idea/
+/.vscode/
 
 # Django media files
 /media/
