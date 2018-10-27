@@ -1,6 +1,12 @@
 # Virtual Environment directory
 /venv/
+/prizy_backend/
+
+# IDE configurations
 /.idea/
+
+# Django media files
+/media/
 
 # Compiled Python
 *.pyc
