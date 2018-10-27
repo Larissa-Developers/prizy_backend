@@ -36,7 +36,7 @@ The project repository and digital or actual interaction between contributors, r
 
 Any DON'Ts violation should be reported by contacting the repository administrator or any other [Larissa Developers Organization](https://github.com/Larissa-Developers) member.
 
-In case the person reported was indeed out of bounds, he's not welcome to contribute anymore, at any level.
+In case the person reported was indeed out of bounds, they're not welcome to contribute anymore, at any level.
 
 Say goodbye to that awesome pull request of yours.
 

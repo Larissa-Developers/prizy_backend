@@ -94,7 +94,7 @@ Event draw prize claim:
 {domain}/api/events/<event_id>/draws/<draw_id>/claim (POST)
 ```
 
-The fundamental principle behind registration, is that a Meetup event attendee will be able to participate only if he has registered for an account.
+The fundamental principle behind registration, is that a Meetup event attendee will be able to participate only if they have registered for an account.
 
 As a result, draw participations will be handled implicitly, based on the account data (i.e the provided email address), without requiring any additional user information to be submitted via the mobile client app.
 
