@@ -150,3 +150,4 @@ class AccountSetup(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         except ValidationError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
