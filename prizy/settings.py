@@ -162,3 +162,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Media files
+# Set media root directory and URL
+
+MEDIA_ROOT = os.getenv('PRIZY_MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
+MEDIA_URL = os.getenv('PRIZY_MEDIA_URL', 'media/')
