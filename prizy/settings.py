@@ -82,8 +82,8 @@ WSGI_APPLICATION = 'prizy.wsgi.application'
 
 PRIZY_DB_ENGINE = 'django.db.backends.mysql'
 PRIZY_DB_NAME = os.getenv('PRIZY_DB_NAME', 'prizy')
-PRIZY_DB_USER = os.getenv('PRIZY_DB_USER', 'prizyuser')
-PRIZY_DB_PASS = os.getenv('PRIZY_DB_PASSWORD', '')
+PRIZY_DB_USER = os.getenv('PRIZY_DB_USER', os.getenv('PRIZY_DB_USER'))
+PRIZY_DB_PASS = os.getenv('PRIZY_DB_PASSWORD', os.getenv('PRIZY_DB_PASS'))
 PRIZY_DB_HOST = os.getenv('PRIZY_DB_HOST', 'localhost')
 PRIZY_DB_PORT = os.getenv('PRIZY_DB_PORT', '')
 
@@ -163,3 +163,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.getenv('PRIZY_MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = os.getenv('PRIZY_MEDIA_URL', 'media/')
+
+MEETUPCOM_API_KEY = os.getenv('MEETUPCOM_API_KEY')
