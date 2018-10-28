@@ -4,16 +4,21 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+
 import meetup.api
+
+from events.models import Event
+from events.serializers import EventSerializer
 
 
 class EventList(ListAPIView):
     """
-    List all registered user accounts
+    List all Meetup events
     """
 
     permission_classes = (IsAdminUser, )
-    # TODO: implement view
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
 
 
 class Meetupcom(APIView):
