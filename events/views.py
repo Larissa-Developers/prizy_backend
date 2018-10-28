@@ -1,3 +1,4 @@
+from django.conf import settings
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
@@ -24,7 +25,7 @@ class Meetupcom(APIView):
 
     def get(self, req):
         try:
-            client = meetup.api.Client(MEETUPCOM_API_KEY)
+            client = meetup.api.Client(settings.MEETUPCOM_API_KEY)
             group_info = client.GetGroup({'urlname': 'Larissa-Developers-Meetup'})
             # use various method on client from
             # https://meetup-api.readthedocs.io/en/latest/meetup_api.html#api-client-details

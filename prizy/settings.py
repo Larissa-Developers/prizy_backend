@@ -164,4 +164,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.getenv('PRIZY_MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = os.getenv('PRIZY_MEDIA_URL', 'media/')
 
-MEETUPCOM_API_KEY = os.getenv('MEETUPCOM_API_KEY')
+
+# Meetup API bridging
+# API key
+MEETUPCOM_API_KEY = os.getenv('MEETUPCOM_API_KEY', '')
