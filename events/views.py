@@ -24,7 +24,7 @@ class Meetupcom(APIView):
 
     def get(self, req):
         try:
-            client = meetup.api.Client('648562f7e53693e31722361f144756')
+            client = meetup.api.Client(MEETUPCOM_API_KEY)
             group_info = client.GetGroup({'urlname': 'Larissa-Developers-Meetup'})
             # use various method on client from
             # https://meetup-api.readthedocs.io/en/latest/meetup_api.html#api-client-details
