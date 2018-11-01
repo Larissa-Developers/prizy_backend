@@ -1,6 +1,6 @@
 # Prizy Back-end
 
-Django REST API back-end for Prizy
+Django REST API back-end for Prizy.
 
 **Requirements:**
 
@@ -69,7 +69,12 @@ Quit the server with CONTROL-C.
 
 All done. The server is up and running!
 
+## Contributions
+
+See the repo's `docs` directory for information on the project design and pending tasks ([Trello board](https://trello.com/b/zIPr3q6l/prizy-backend)), as well as the Code of Conduct for teamwork ground rules.
+
 ## References
 
 * [Django Documentation](https://docs.djangoproject.com/en/2.1/)
 * [Django REST Tutorials & API Guide](https://www.django-rest-framework.org/)
+* [Git tutorials](https://www.atlassian.com/git/tutorials)

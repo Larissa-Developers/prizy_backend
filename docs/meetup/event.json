@@ -1,4 +1,4 @@
-api response
+{
     "utc_offset": -18000000,
     "venue": {
         "country": "us",
@@ -45,5 +45,4 @@ api response
         "who": "NYC Technologists"
     },
     "status": "upcoming"
-
-},
+}

@@ -30,7 +30,7 @@ urlpatterns = [
     path('verify/', verify_jwt_token, name='jwt_verify'),
     # API routes
     path('api/', include('accounts.urls')),
-    path('api/', include('events.urls'))
+    path('api/', include('events.urls')),
 ]
 
 # Defining where the images are placed, for DEBUG mode only!!!
