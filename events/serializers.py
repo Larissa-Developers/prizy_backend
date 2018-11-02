@@ -53,9 +53,9 @@ class EventSerializer(serializers.ModelSerializer):
             'status',
         ]
 
-
     def create(self, validated_data):
         return Event.objects.create(**validated_data)
+
 
 class EventDetailSerializer(serializers.ModelSerializer):
     event_venue = EventVenueSerializer()
