@@ -29,7 +29,7 @@ class AccountRegister(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, req):
-        account = Account.objects.create()
+        account = Account()
         serializer = AccountSerializer(account, data=req.data)
         if serializer.is_valid():
             serializer.password = make_password(serializer.validated_data['password'])
