@@ -31,6 +31,7 @@ urlpatterns = [
     # API routes
     path('api/', include('accounts.urls')),
     path('api/', include('events.urls')),
+    path('api/', include('checkins.urls')),
 ]
 
 # Defining where the images are placed, for DEBUG mode only!!!
