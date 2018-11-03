@@ -136,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Allow JWT refresh upon expiry
 
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': os.getenv('JWT_EXPIRATION_DELTA', datetime.timedelta(days=1)),
+    'JWT_EXPIRATION_DELTA': os.getenv('JWT_EXPIRATION_DELTA', datetime.timedelta(days=365)),
     'JWT_ALLOW_REFRESH': os.getenv('JWT_ALLOW_REFRESH', 'True')
 }
 
@@ -163,7 +163,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.getenv('PRIZY_MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = os.getenv('PRIZY_MEDIA_URL', 'media/')
-
 
 # Meetup API bridging
 # API key
