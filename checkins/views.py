@@ -15,6 +15,7 @@ class CheckinCreate(APIView):
     """
     Create a new check in
     """
+    permission_classes = (IsAdminUser, )
     def post(self, req):
         checkin = Checkin()
         serializer = CheckinSerializer(checkin, data=req.data)
