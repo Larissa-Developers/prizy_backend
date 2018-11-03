@@ -7,6 +7,8 @@ from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from rest_framework_jwt.settings import api_settings
+
 from accounts.models import Account
 from accounts.serializers import AccountSerializer
 
@@ -29,7 +31,7 @@ class AccountRegister(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, req):
-        account = Account.objects.create()
+        account = Account()
         serializer = AccountSerializer(account, data=req.data)
         if serializer.is_valid():
             serializer.password = make_password(serializer.validated_data['password'])
@@ -39,6 +41,46 @@ class AccountRegister(APIView):
         return Response(status=status.HTTP_400_BAD_REQUEST, data={
             'reason': 'Request data not properly structured'
         })
+
+
+class AccountLogin(APIView):
+    """
+    Login a registered user account
+    """
+
+    permission_classes = (AllowAny,)
+
+    def post(self, req):
+        if not req.data:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={
+                'reason': 'Authentication data not provided (username, email)'
+            })
+
+        try:
+            account = Account.objects.get(username=req.data['username'], email=req.data['email'])
+        except KeyError as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={
+                'reason': 'Key %s not found in request data' % str(e)
+            })
+        except Account.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND, data={
+                'reason': 'Account not found'
+            })
+
+        if account:
+            jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+            jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+            payload = jwt_payload_handler(account)
+            jwt_token = jwt_encode_handler(payload)
+
+            return Response(status=status.HTTP_200_OK, data={
+                'token': jwt_token
+            })
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED, data={
+                'reason': 'Could not verify account information'
+            })
 
 
 class AccountDetails(APIView):
@@ -150,4 +192,3 @@ class AccountSetup(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         except ValidationError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
