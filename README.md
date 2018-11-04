@@ -71,7 +71,7 @@ All done. The server is up and running!
 
 ## Contributions
 
-See the repo's `docs` directory for information on the project design and pending tasks ([Trello board](https://trello.com/b/zIPr3q6l/prizy-backend)), as well as the Code of Conduct for teamwork ground rules.
+See the repo's [wiki](https://github.com/Larissa-Developers/prizy_backend/wiki) for information on the project design and pending tasks ([Trello board](https://trello.com/b/zIPr3q6l/prizy-backend)), as well as the Code of Conduct for teamwork ground rules.
 
 ## References
 
