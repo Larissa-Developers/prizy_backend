@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'storages',
 
     'accounts',
-    'events'
+    'events',
+    'checkins,
 ]
 
 MIDDLEWARE = [
