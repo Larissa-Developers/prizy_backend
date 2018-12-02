@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'events',
-    'checkins,
+    'checkins',
 ]
 
 MIDDLEWARE = [
