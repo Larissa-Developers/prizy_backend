@@ -1,5 +1,5 @@
 from django.conf import settings
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -8,7 +8,7 @@ from rest_framework import status
 import meetup.api
 
 from events.models import Event
-from events.serializers import EventSerializer
+from events.serializers import EventSerializer, EventDetailSerializer
 
 
 class EventList(ListAPIView):
@@ -20,6 +20,13 @@ class EventList(ListAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
+class EventDetails(RetrieveAPIView):
+    """
+    List one event with all the fields
+    """
+    permission_classes = (IsAdminUser, )
+    queryset = Event.objects.all()
+    serializer_class = EventDetailSerializer
 
 class Meetupcom(APIView):
     """

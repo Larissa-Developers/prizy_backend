@@ -1,5 +1,6 @@
 from django.db import models
 from PIL import Image
+from accounts.models import Account
 
 
 class EventVenue(models.Model):
@@ -55,6 +56,7 @@ class Event(models.Model):
     time = models.IntegerField()
     updated = models.IntegerField()
     status = models.CharField(max_length=50, default='upcoming')
+    checkins = models.ManyToManyField(Account, blank=True, related_name='checked_in')
 
     def save(self, *kwargs):
         """

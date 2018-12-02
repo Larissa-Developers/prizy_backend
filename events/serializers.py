@@ -52,3 +52,15 @@ class EventSerializer(serializers.ModelSerializer):
             'updated',
             'status',
         ]
+
+    def create(self, validated_data):
+        return Event.objects.create(**validated_data)
+
+
+class EventDetailSerializer(serializers.ModelSerializer):
+    event_venue = EventVenueSerializer()
+    event_fee = EventFeeSerializer()
+
+    class Meta:
+        model = Event
+        fields = '__all__'
