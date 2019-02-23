@@ -1,6 +1,11 @@
+import datetime
+
 from django.db import models
-from PIL import Image
 from accounts.models import Account
+
+
+def get_current_datetime():
+    return datetime.datetime.now()
 
 
 class EventVenue(models.Model):
@@ -18,7 +23,7 @@ class EventVenue(models.Model):
     repinned = models.BooleanField(default=False)
 
     def __str__(self):
-        return 'Venue : {}'.format(self.id)
+        return 'Venue : {} {}'.format(self.id, self.name)
 
 
 class EventFee(models.Model):
@@ -32,44 +37,73 @@ class EventFee(models.Model):
     required = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.label
+        return 'Fee: {} {}'.format(self.id, self.label)
 
 
 class Event(models.Model):
     """
-    Equivalent to meet up's api Event model
+    Equivalent to the Meetup API event model
     """
 
     event_meetup_id = models.CharField(max_length=32, default='')
-    event_venue = models.ForeignKey(to=EventVenue, on_delete=models.CASCADE)
+    event_venue = models.OneToOneField(to=EventVenue, on_delete=models.CASCADE)
+    event_fee = models.OneToOneField(to=EventFee, on_delete=models.CASCADE)
     reservation_limit = models.IntegerField(default=100)
     headcount = models.IntegerField(default=0)
     visibility = models.CharField(max_length=10)
-    waitlistcount = models.IntegerField(default=0)
-    event_fee = models.ForeignKey(to=EventFee, on_delete=models.CASCADE)
+    waitlist_count = models.IntegerField(default=0)
     description = models.TextField()
     event_url = models.CharField(max_length=250)
     yes_reservation_count = models.IntegerField(default=0)
     duration = models.IntegerField()
     name = models.CharField(max_length=80, blank=False, null=False)
-    photo = models.ImageField(default='event_pics/default.png', upload_to='event_pics')
     time = models.IntegerField()
     updated = models.IntegerField()
     status = models.CharField(max_length=50, default='upcoming')
-    checkins = models.ManyToManyField(Account, blank=True, related_name='checked_in')
-
-    def save(self, *kwargs):
-        """
-        Overrides default behaviour to crop the image
-        """
-
-        super().save()
-
-        img = Image.open(self.photo.path)
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.photo.path)
 
     def __str__(self):
-        return self.name
+        return 'Event: {} {}'.format(self.id, self.name)
+
+
+class EventCheckIn(models.Model):
+    """
+    Data representation of a user check-in to an Event
+    """
+
+    event = models.ForeignKey(to=Event, on_delete=models.CASCADE)
+    account = models.ForeignKey(to=Account, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=get_current_datetime)
+
+    class Meta:
+        unique_together = ('account', 'event')
+
+    def __str__(self):
+        return 'Account: {} - Event: {}'.format(self.account.username, self.event.id)
+
+
+class EventDraw(models.Model):
+    """
+    Data representation of an event prize draw
+    """
+
+    event = models.ForeignKey(to=Event, on_delete=models.CASCADE)
+    title = models.CharField(max_length=128, null=True, default="")
+
+    def __str__(self):
+        return 'Draw: {} {}'.format(self.event.id, self.id)
+
+
+class EventDrawParticipation(models.Model):
+    """
+    Data representation of an event prize draw participation
+    """
+
+    checkin = models.ForeignKey(to=EventCheckIn, on_delete=models.CASCADE)
+    draw = models.ForeignKey(to=EventDraw, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=get_current_datetime)
+
+    class Meta:
+        unique_together = ('checkin', 'draw')
+
+    def __str__(self):
+        return 'Draw Participation: {} {}'.format(self.draw.id, self.id)
