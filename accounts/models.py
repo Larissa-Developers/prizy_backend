@@ -18,7 +18,7 @@ class Account(AbstractUser):
     profile_pic = models.ImageField(default="", blank=True, upload_to="")
 
     def __str__(self):
-        return self.username
+        return 'Account: {}'.format(self.username)
 
 
 class AccountSetupForm(forms.Form):

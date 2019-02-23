@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
     'accounts',
     'events',
-    'checkins',
 ]
 
 MIDDLEWARE = [
@@ -157,7 +156,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.getenv('PRIZY_STATIC_ROOT', 'static')
+STATIC_URL = os.getenv('PRIZY_STATIC_URL', '/static/')
 
 # Media files
 # Set media root directory and URL
