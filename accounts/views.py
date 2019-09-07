@@ -107,14 +107,7 @@ class AccountDetails(APIView):
         if req.user.is_superuser:
             acc_data = serializer.data
         else:
-            acc_data = {
-                'id': serializer.data['id'],
-                'username': serializer.data['username'],
-                'first_name': serializer.data['first_name'],
-                'last_name': serializer.data['last_name'],
-                'email': serializer.data['email'],
-                'profile_pic': serializer.data['profile_pic']
-            }
+            acc_data = format_response_data(serializer=serializer)
 
         return Response(status=status.HTTP_202_ACCEPTED, data=acc_data)
 
@@ -137,14 +130,7 @@ class AccountDetails(APIView):
         if req.user.is_superuser:
             acc_data = serializer.data
         else:
-            acc_data = {
-                'id': serializer.data['id'],
-                'username': serializer.data['username'],
-                'first_name': serializer.data['first_name'],
-                'last_name': serializer.data['last_name'],
-                'email': serializer.data['email'],
-                'profile_pic': serializer.data['profile_pic']
-            }
+            acc_data = format_response_data(serializer=serializer)
 
         return Response(status=status.HTTP_202_ACCEPTED, data=acc_data)
 
@@ -192,3 +178,21 @@ class AccountSetup(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         except ValidationError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+def format_response_data(serializer: AccountSerializer) -> dict:
+    """
+    Format Account views response data
+
+    :param serializer: the Account model serializer
+    :return: response data dictionary
+    """
+
+    return {
+        'id': serializer.data['id'],
+        'username': serializer.data['username'],
+        'first_name': serializer.data['first_name'],
+        'last_name': serializer.data['last_name'],
+        'email': serializer.data['email'],
+        'profile_pic': serializer.data['profile_pic']
+    }
