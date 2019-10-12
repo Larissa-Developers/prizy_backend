@@ -33,8 +33,8 @@
 							"type": "text"
 						},
 						{
-							"key": "password",
-							"value": "{{password}}",
+							"key": "email",
+							"value": "{{email}}",
 							"type": "text"
 						}
 					]
