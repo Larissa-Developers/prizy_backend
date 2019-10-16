@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "3f4a3a8c-3f78-45f0-a72c-b3c382fd5f88",
+		"name": "Prizy API",
+		"description": "Prizy back-end API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST JWT Auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e067e03-7bba-4c8c-8861-e1be6e5a070c",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"JWT\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/auth/",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"auth",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST JWT Verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "token",
+							"value": "{{JWT}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/verify/",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"verify",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST JWT Refresh",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5fbc9ff-756e-4145-a287-542469d72de4",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"JWT\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "token",
+							"value": "{{JWT}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/refresh/",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Account Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "john@doe.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Host}}/api/accounts/:id",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"accounts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/accounts/:id",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"accounts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host}}/api/accounts",
+					"host": [
+						"{{Host}}"
+					],
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
