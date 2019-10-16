@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'events',
+    'meetupws'
 ]
 
 MIDDLEWARE = [
@@ -167,4 +168,4 @@ MEDIA_URL = os.getenv('PRIZY_MEDIA_URL', 'media/')
 
 # Meetup API bridging
 # API key
-MEETUPCOM_API_KEY = os.getenv('MEETUPCOM_API_KEY', '')
+MEETUP_OAUTH_TOKEN = os.getenv('MEETUP_OAUTH_TOKEN', '')
